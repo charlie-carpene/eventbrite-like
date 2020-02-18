@@ -26,7 +26,7 @@
           Mon compte
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <%= link_to "Mon profil", user_registration_path, method: :delete, :class => "btn btn-light my-2 my-sm-0" %>
+        <%= link_to "Mon profil", user_path(current_user.id), :class => "btn btn-light my-2 my-sm-0" %>
         <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, :class => "btn btn-light my-2 my-sm-0" %>
         </div>
       </div>
