@@ -7,7 +7,44 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+  <div class="d-flex flex-row">
+    <%= link_to "Eventbrikelike", root_path, :class => "navbar-brand" %>
+    <%= link_to "Créer un évènement", new_event_path, :class => "nav-link text-secondary" %>
+  </div>
+
+  <div>
+    <% if current_user %>
+      <div class="dropdown show">
+        <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mon compte
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <%= link_to "Mon profil", user_registration_path, method: :delete, :class => "btn btn-light my-2 my-sm-0" %>
+        <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, :class => "btn btn-light my-2 my-sm-0" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="dropdown show">
+        <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Créer un compte / Se connecter
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <%= link_to "Créer un compte", new_user_registration_path, :class => "dropdown-item" %>
+          <%= link_to "Se connecter", new_user_session_path, :class => "dropdown-item" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</nav>
+</header>
 
   <body>
     <%= yield %>

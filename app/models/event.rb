@@ -7,15 +7,21 @@ class Event < ApplicationRecord
   validates :duration,
     presence: true,
     numericality: true,
-    numericality: { greater_than: 0 }
+    numericality: {
+      greater_than: 0 #, qual_to: %5
+    }
 
   validates  :title,
     presence: true,
-    length: { in: 5..140 }
+    length: {
+      in: 5..140
+    }
 
   validates :description,
     presence: true,
-    length: { in: 20..1000 }
+    length: {
+      in: 20..1000
+    }
 
   validates :price,
     presence:  true,
